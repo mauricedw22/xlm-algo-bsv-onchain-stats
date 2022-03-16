@@ -102,6 +102,8 @@ export class DashboardComponent implements OnInit {
 
       for(let i=0;i<info.observations.length;i++){
 
+        let zero;
+
           // gold_array.push(info.observations[i].value)
           // dates_array.push(info.observations[i].date)
   
