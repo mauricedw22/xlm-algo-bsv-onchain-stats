@@ -95,20 +95,16 @@ export class DashboardComponent implements OnInit {
 
     async function prepare_array() {
 
-      const response = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=PCU2122212122210&file_type=json&observation_start=1985-06-01&observation_end=2022-01-28');
+      const response = await fetch('https://https://node.algoexplorerapi.io/v2/ledger/supply');
       const body = await response.text();
       const info = JSON.parse(body);
 
-      // const response = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=PCU2122212122210&file_type=json&observation_start=1985-06-01&observation_end=2022-01-28');
-      // const body = await response.text();
-      // const info = JSON.parse(body);
+      for(let i=0;i<info.observations.length;i++){
 
-      // for(let i=0;i<info.observations.length;i++){
-
-      //     gold_array.push(info.observations[i].value)
-      //     dates_array.push(info.observations[i].date)
+          gold_array.push(info.observations[i].value)
+          dates_array.push(info.observations[i].date)
   
-      // }
+      }
 
       const response2 = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGUSM052N&file_type=json&observation_end=2022-01-01');
       const body2 = await response2.text();
