@@ -71,7 +71,8 @@ export class DashboardComponent implements OnInit {
       this.addRtlOptions();
     }
 
-    let gold_array: Array<any> = [];
+    // let gold_array: Array<any> = [];
+    let algo_data: Array<any> = [];
     let dates_array: Array<any> = [];
 
     let dates_bargraph_array: Array<any> = [];
