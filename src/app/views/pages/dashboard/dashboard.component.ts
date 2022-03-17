@@ -72,25 +72,11 @@ export class DashboardComponent implements OnInit {
     }
 
     // let gold_array: Array<any> = [];
-    let algo_data: Array<any> = [];
+    let barchart_array: Array<any> = [];
     let dates_array: Array<any> = [];
 
     let dates_bargraph_array: Array<any> = [];
     let reserves_array: Array<any> = [];
-    let turkey_reserves_array: Array<any> = [];
-    let germany_reserves_array: Array<any> = [];
-    let uk_reserves_array: Array<any> = [];
-    let india_reserves_array: Array<any> = [];
-
-    let spVix_array: Array<any> = [];
-    let russellVix_array: Array<any> = [];
-    let vix_dates_array: Array<any> = [];
-
-    let debtGDP_array: Array<any> = [];
-    let debtGDP1_array: Array<any> = [];
-    let ausDebtGDP_array: Array<any> = [];
-    let usDebtGDP_array: Array<any> = [];
-    let koreaDebtGDP_array: Array<any> = [];
 
     // let txn_data: Object = {};
 
@@ -100,131 +86,21 @@ export class DashboardComponent implements OnInit {
       const body = await response.text();
       const info = JSON.parse(body);
 
-      for(let i=0;i<info.observations.length;i++){
-
-        let zero;
-
-          // gold_array.push(info.observations[i].value)
-          // dates_array.push(info.observations[i].date)
-  
-      }
+      barchart_array.push(info.current_round);
 
       const response2 = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGUSM052N&file_type=json&observation_end=2022-01-01');
       const body2 = await response2.text();
-      const us_res_info = JSON.parse(body2);
+      const info2 = JSON.parse(body2);
 
-      for(let i=us_res_info.observations.length-144;i<us_res_info.observations.length;i=i+12){
+      
 
-        reserves_array.push(us_res_info.observations[i].value)
-        dates_bargraph_array.push((us_res_info.observations[i].date).substring(0,4))
+      // for(let i=us_res_info.observations.length-144;i<us_res_info.observations.length;i=i+12){
 
-      }
-
-      const response3 = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGTRM052N&file_type=json&observation_end=2022-01-01');
-      const body3 = await response3.text();
-      const turkey_res_info = JSON.parse(body3);
-
-      for(let i=turkey_res_info.observations.length-144;i<turkey_res_info.observations.length;i=i+12){
-
-        turkey_reserves_array.push(turkey_res_info.observations[i].value)
-
-      }
-
-      const response4 = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGDEM052N&file_type=json&observation_end=2022-01-01');
-      const body4 = await response4.text();
-      const germany_res_info = JSON.parse(body4);
-
-      for(let i=germany_res_info.observations.length-144;i<germany_res_info.observations.length;i=i+12){
-
-        germany_reserves_array.push(germany_res_info.observations[i].value)
-
-      }
-
-      const response5 = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGGBM052N&file_type=json&observation_end=2022-01-01');
-      const body5 = await response5.text();
-      const uk_res_info = JSON.parse(body5);
-
-      for(let i=uk_res_info.observations.length-144;i<uk_res_info.observations.length;i=i+12){
-
-        uk_reserves_array.push(uk_res_info.observations[i].value)
-
-      }
-
-      const response6 = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGINM052N&file_type=json&observation_end=2022-01-01');
-      const body6 = await response6.text();
-      const india_res_info = JSON.parse(body6);
-
-      for(let i=india_res_info.observations.length-144;i<india_res_info.observations.length;i=i+12){
-
-        india_reserves_array.push(india_res_info.observations[i].value)
-
-      }
-
-      const spVixData = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=VIXCLS&file_type=json&observation_end=' + todaysDateOutput);
-      const spVix = await spVixData.text();
-      const spVix_res_info = JSON.parse(spVix);
-
-      for(let i=spVix_res_info.observations.length-180;i<spVix_res_info.observations.length;i++){
-
-        spVix_array.push(spVix_res_info.observations[i].value)
-        vix_dates_array.push(spVix_res_info.observations[i].date)
-
-      }
-
-      const russellVixData = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=RVXCLS&file_type=json&observation_end=' + todaysDateOutput);
-      const russellVix = await russellVixData.text();
-      const russellVix_res_info = JSON.parse(russellVix);
-
-      for(let i=russellVix_res_info.observations.length-180;i<russellVix_res_info.observations.length;i++){
-
-        russellVix_array.push(russellVix_res_info.observations[i].value)
-        // vix_dates_array.push(russellVix_res_info.observations[i].date)
-
-      }
-
-      const ausGDPData = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=HDTGPDAUQ163N&file_type=json&observation_start=2021-04-01&observation_end=2021-04-01');
-      const ausDebtGDP = await ausGDPData.text();
-      const ausDebtGDP_res_info = JSON.parse(ausDebtGDP);
-
-      const usGDPData = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=HDTGPDUSQ163N&file_type=json&observation_start=2021-04-01&observation_end=2021-04-01');
-      const usDebtGDP = await usGDPData.text();
-      const usDebtGDP_res_info = JSON.parse(usDebtGDP);
-
-      const koreaGDPData = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=HDTGPDKRQ163N&file_type=json&observation_start=2021-04-01&observation_end=2021-04-01');
-      const koreaDebtGDP = await koreaGDPData.text();
-      const koreaDebtGDP_res_info = JSON.parse(koreaDebtGDP);
-
-      // for(let i=0;i<koreaDebtGDP_res_info.observations.length;i++){
-
-      //   // russellVix_array.push(russellVix_res_info.observations[i].value)
+      //   reserves_array.push(us_res_info.observations[i].value)
+      //   dates_bargraph_array.push((us_res_info.observations[i].date).substring(0,4))
 
       // }
-
-      console.log(ausDebtGDP_res_info.observations[ausDebtGDP_res_info.observations.length-1].value)
-      console.log(usDebtGDP_res_info.observations[usDebtGDP_res_info.observations.length-1].value)
-      console.log(koreaDebtGDP_res_info.observations[koreaDebtGDP_res_info.observations.length-1].value)
-
-      ausDebtGDP_array.push(parseInt(ausDebtGDP_res_info.observations[0].value));
-      usDebtGDP_array.push(parseInt(usDebtGDP_res_info.observations[0].value));
-      koreaDebtGDP_array.push(parseInt(koreaDebtGDP_res_info.observations[0].value));
-
-      debtGDP1_array = ausDebtGDP_array.concat(usDebtGDP_array);
-      debtGDP_array = debtGDP1_array.concat(koreaDebtGDP_array);
-
-      console.log(debtGDP_array)
-
-      // for(let i=ausDebtGDP_res_info.observations.length-180;i<ausDebtGDP_res_info.observations.length;i++){
-
-      //   ausDebtGDP_array.push(ausDebtGDP_res_info.observations[i].value);
-      //   gdp_dates_array.push(ausDebtGDP_res_info.observations[i].date);
-
-      // }
-
-      // https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=HDTGPDAUQ163N&file_type=json&observation_end=2022-01-01
-
-      // console.log(spVix_array)
-      // console.log(russellVix_array)
-      // console.log(vix_dates_array)      
+   
 
     };
 
@@ -293,32 +169,32 @@ export class DashboardComponent implements OnInit {
 // /**
 //  * Orders chart options
 //  */
-// function getOrdersChartOptions(obj: any) {
-//   return {
-//     series: [{
-//       name: '',
-//       data: [36, 77, 52, 90, 74, 35, 55, 23, 47, 10, 63]
-//     }],
-//     chart: {
-//       type: "bar",
-//       height: 60,
-//       sparkline: {
-//         enabled: !0
-//       }
-//     },
-//     colors: [obj.primary],
-//     plotOptions: {
-//       bar: {
-//         borderRadius: 2,
-//         columnWidth: "60%"
-//       }
-//     },
-//     xaxis: {
-//       type: 'datetime',
-//       categories: ["Jan 01 2022", "Jan 02 2022", "Jan 03 2022", "Jan 04 2022", "Jan 05 2022", "Jan 06 2022", "Jan 07 2022", "Jan 08 2022", "Jan 09 2022", "Jan 10 2022", "Jan 11 2022",],
-//     }
-//   }
-// };
+function getOrdersChartOptions(obj: any) {
+  return {
+    series: [{
+      name: '',
+      data: [36, 77, 52, 90, 74, 35, 55, 23, 47, 10, 63]
+    }],
+    chart: {
+      type: "bar",
+      height: 60,
+      sparkline: {
+        enabled: !0
+      }
+    },
+    colors: [obj.primary],
+    plotOptions: {
+      bar: {
+        borderRadius: 2,
+        columnWidth: "60%"
+      }
+    },
+    xaxis: {
+      type: 'datetime',
+      categories: ["Jan 01 2022", "Jan 02 2022", "Jan 03 2022", "Jan 04 2022", "Jan 05 2022", "Jan 06 2022", "Jan 07 2022", "Jan 08 2022", "Jan 09 2022", "Jan 10 2022", "Jan 11 2022",],
+    }
+  }
+};
 
 
 
