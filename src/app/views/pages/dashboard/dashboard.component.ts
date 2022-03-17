@@ -56,7 +56,7 @@ export class DashboardComponent implements OnInit {
     todaysDateOutput = todaysDate.toISOString().substring(0,10);
 
     // this.customersChartOptions = getCustomerseChartOptions(this.obj);
-    // this.ordersChartOptions = getOrdersChartOptions(this.obj);
+    this.ordersChartOptions = getOrdersChartOptions(this.obj);
     // this.growthChartOptions = getGrowthChartOptions(this.obj)    
     
     // this.cloudStorageChartOptions = getCloudStorageChartOptions(this.obj);
@@ -74,9 +74,6 @@ export class DashboardComponent implements OnInit {
     // let gold_array: Array<any> = [];
     let barchart_array: Array<any> = [];
     let dates_array: Array<any> = [];
-
-    let dates_bargraph_array: Array<any> = [];
-    let reserves_array: Array<any> = [];
 
     // let txn_data: Object = {};
 
@@ -109,7 +106,8 @@ export class DashboardComponent implements OnInit {
 
     setTimeout(() => {
 
-      this.goldPpiChartOptions = getGoldPpiChartOptions(this.obj, gold_array, dates_array);    
+      this.ordersChartOptions = getOrdersChartOptions(this.obj, barchart_array);
+      // this.goldPpiChartOptions = getGoldPpiChartOptions(this.obj, gold_array, dates_array);    
       // this.reservesChartOptions = getReservesChartOptions(this.obj, reserves_array, turkey_reserves_array, germany_reserves_array, uk_reserves_array, india_reserves_array, dates_bargraph_array);
       // this.lineChartOptions = getVixChartOptions(this.obj, spVix_array, russellVix_array, vix_dates_array);
       // this.pieChartOptions = getPieChartOptions(this.obj, debtGDP_array);  
@@ -170,11 +168,11 @@ export class DashboardComponent implements OnInit {
 // /**
 //  * Orders chart options
 //  */
-function getOrdersChartOptions(obj: any) {
+function getOrdersChartOptions(obj: any, yArr: Array<any>) {
   return {
     series: [{
       name: '',
-      data: [36, 77, 52, 90, 74, 35, 55, 23, 47, 10, 63]
+      data: yArr, // [36, 77, 52, 90, 74, 35, 55, 23, 47, 10, 63]
     }],
     chart: {
       type: "bar",
@@ -192,7 +190,7 @@ function getOrdersChartOptions(obj: any) {
     },
     xaxis: {
       type: 'datetime',
-      categories: ["Jan 01 2022", "Jan 02 2022", "Jan 03 2022", "Jan 04 2022", "Jan 05 2022", "Jan 06 2022", "Jan 07 2022", "Jan 08 2022", "Jan 09 2022", "Jan 10 2022", "Jan 11 2022",],
+      categories: ["Algorand","Bit"],
     }
   }
 };
