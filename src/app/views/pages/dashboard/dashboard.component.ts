@@ -92,6 +92,7 @@ export class DashboardComponent implements OnInit {
       const body2 = await response2.text();
       const info2 = JSON.parse(body2);
 
+      barchart_array.push(info2.blocks);
 
 
       // for(let i=us_res_info.observations.length-144;i<us_res_info.observations.length;i=i+12){
