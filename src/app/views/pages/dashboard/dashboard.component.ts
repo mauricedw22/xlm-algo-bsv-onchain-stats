@@ -190,7 +190,7 @@ function getOrdersChartOptions(obj: any, yArr: Array<any>) {
     },
     xaxis: {
       type: 'datetime',
-      categories: ["Algorand","Bit"],
+      categories: ["Algorand","Bitcoin SV"],
     }
   }
 };
