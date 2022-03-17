@@ -88,11 +88,11 @@ export class DashboardComponent implements OnInit {
 
       barchart_array.push(info.current_round);
 
-      const response2 = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGUSM052N&file_type=json&observation_end=2022-01-01');
+      const response2 = await fetch('https://api.whatsonchain.com/v1/bsv/main/chain/info');
       const body2 = await response2.text();
       const info2 = JSON.parse(body2);
 
-      
+
 
       // for(let i=us_res_info.observations.length-144;i<us_res_info.observations.length;i=i+12){
 
