@@ -171,7 +171,7 @@ export class DashboardComponent implements OnInit {
 function getOrdersChartOptions(obj: any, yArr: Array<any>) {
   return {
     series: [{
-      name: '',
+      name: 'Block Height',
       data: yArr, // [36, 77, 52, 90, 74, 35, 55, 23, 47, 10, 63]
     }],
     chart: {
