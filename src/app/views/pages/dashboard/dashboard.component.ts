@@ -56,8 +56,8 @@ export class DashboardComponent implements OnInit {
     todaysDateOutput = todaysDate.toISOString().substring(0,10);
 
     // this.customersChartOptions = getCustomerseChartOptions(this.obj);
-    // this.ordersChartOptions = getOrdersChartOptions(this.obj);
-    this.growthChartOptions = getGrowthChartOptions(this.obj)    
+    this.ordersChartOptions = getOrdersChartOptions(this.obj);
+    // this.growthChartOptions = getGrowthChartOptions(this.obj)    
     
     // this.cloudStorageChartOptions = getCloudStorageChartOptions(this.obj);
 
