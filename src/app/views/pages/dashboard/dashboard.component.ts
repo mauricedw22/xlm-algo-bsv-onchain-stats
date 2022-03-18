@@ -62,7 +62,7 @@ export class DashboardComponent implements OnInit {
     // this.cloudStorageChartOptions = getCloudStorageChartOptions(this.obj);
 
     // this.lineChartOptions = getLineChartOptions(this.obj);
-    this.pieChartOptions = getPieChartOptions(this.obj);
+    // this.pieChartOptions = getPieChartOptions(this.obj);
     this.radarChartOptions = getRadarChartOptions(this.obj);
     
 
