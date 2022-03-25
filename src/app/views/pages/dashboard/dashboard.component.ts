@@ -176,12 +176,12 @@ function getOrdersChartOptions(obj: any, yArr: Array<any>) {
     }],
     chart: {
       type: "bar",
-      height: 60,
+      height: 100,
       sparkline: {
         enabled: !0
       }
     },
-    colors: [obj.primary, obj.danger],
+    colors: [obj.primary],
     plotOptions: {
       bar: {
         borderRadius: 2,
@@ -191,7 +191,12 @@ function getOrdersChartOptions(obj: any, yArr: Array<any>) {
     xaxis: {
       type: 'string',
       categories: ["Algorand","Bitcoin SV"],
-    }
+    },
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    },
   }
 };
 
