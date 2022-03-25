@@ -79,7 +79,7 @@ export class DashboardComponent implements OnInit {
 
     async function prepare_array() {
 
-      const response = await fetch('https://https://node.algoexplorerapi.io/v2/ledger/supply');
+      const response = await fetch('https://node.algoexplorerapi.io/v2/ledger/supply');
       const body = await response.text();
       const info = JSON.parse(body);
 
