@@ -186,7 +186,12 @@ function getOrdersChartOptions(obj: any, yArr: Array<any>) {
       bar: {
         borderRadius: 2,
         columnWidth: "60%"
-      }
+      },
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      },
     },
     xaxis: {
       type: 'string',
