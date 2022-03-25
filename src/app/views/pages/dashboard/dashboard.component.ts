@@ -181,7 +181,7 @@ function getOrdersChartOptions(obj: any, yArr: Array<any>) {
         enabled: !0
       }
     },
-    colors: [obj.primary],
+    colors: [obj.primary, obj.danger],
     plotOptions: {
       bar: {
         borderRadius: 2,
@@ -189,7 +189,7 @@ function getOrdersChartOptions(obj: any, yArr: Array<any>) {
       }
     },
     xaxis: {
-      type: 'datetime',
+      type: 'string',
       categories: ["Algorand","Bitcoin SV"],
     }
   }
