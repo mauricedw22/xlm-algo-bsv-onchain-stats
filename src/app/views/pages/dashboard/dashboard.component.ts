@@ -197,11 +197,6 @@ function getOrdersChartOptions(obj: any, yArr: Array<any>) {
       type: 'string',
       categories: ["Algorand","Bitcoin SV"],
     },
-    // scales: {
-    //   y: {
-    //     beginAtZero: true
-    //   }
-    // },
   }
 };
 
