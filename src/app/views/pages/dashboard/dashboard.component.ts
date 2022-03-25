@@ -187,11 +187,11 @@ function getOrdersChartOptions(obj: any, yArr: Array<any>) {
         borderRadius: 2,
         columnWidth: "60%"
       },
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      },
+      // scales: {
+      //   y: {
+      //     beginAtZero: true
+      //   }
+      // },
     },
     xaxis: {
       type: 'string',
