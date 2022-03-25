@@ -112,7 +112,7 @@ export class DashboardComponent implements OnInit {
       // this.lineChartOptions = getVixChartOptions(this.obj, spVix_array, russellVix_array, vix_dates_array);
       // this.pieChartOptions = getPieChartOptions(this.obj, debtGDP_array);  
 
-    }, 3000);
+    }, 4000);
 
    }
 
