@@ -115,7 +115,7 @@ export class DashboardComponent implements OnInit {
       this.ordersChartOptions = getOrdersChartOptions(this.obj, barchart_array);
       this.areaChartOptions = getAreaChartOptions(this.obj);
       this.mixedChartOptions = getMixedChartOptions(this.obj);
-      this.goldPpiChartOptions = getGoldPpiChartOptions(this.obj, gold_array, dates_array);    
+      // this.goldPpiChartOptions = getGoldPpiChartOptions(this.obj, gold_array, dates_array);    
       // this.reservesChartOptions = getReservesChartOptions(this.obj, reserves_array, turkey_reserves_array, germany_reserves_array, uk_reserves_array, india_reserves_array, dates_bargraph_array);
       // this.lineChartOptions = getVixChartOptions(this.obj, spVix_array, russellVix_array, vix_dates_array);
       // this.pieChartOptions = getPieChartOptions(this.obj, debtGDP_array);  
