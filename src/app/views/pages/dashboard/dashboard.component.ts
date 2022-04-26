@@ -23,6 +23,9 @@ export class DashboardComponent implements OnInit {
   public pieChartOptions: any = {};
   public radarChartOptions: any = {};
 
+  public areaChartOptions: any = {};
+  public mixedChartOptions: any = {};
+
   // colors and font variables for apex chart 
   obj = {
     primary        : "#6571ff",
@@ -64,6 +67,9 @@ export class DashboardComponent implements OnInit {
     // this.lineChartOptions = getLineChartOptions(this.obj);
     // this.pieChartOptions = getPieChartOptions(this.obj);
     this.radarChartOptions = getRadarChartOptions(this.obj);
+
+    this.areaChartOptions = getAreaChartOptions(this.obj);
+    this.mixedChartOptions = getMixedChartOptions(this.obj);
     
 
     // Some RTL fixes. (feel free to remove if you are using LTR))
@@ -200,6 +206,220 @@ function getOrdersChartOptions(obj: any, yArr: Array<any>) {
   }
 };
 
+
+/**
+ * Area chart options
+ */    
+ function getAreaChartOptions(obj: any) {
+  return {
+    series: [
+      {
+        name: 'Total Views',
+        data: generateDayWiseTimeSeries(0, 18)
+      }, {
+        name: 'Unique Views',
+        data: generateDayWiseTimeSeries(1, 18)
+      }
+    ],
+    chart: {
+      type: "area",
+      height: 300,
+      parentHeightOffset: 0,
+      foreColor: obj.bodyColor,
+      background: obj.cardBg,
+      toolbar: {
+        show: false
+      },
+      stacked: true,
+    },
+    colors: [obj.danger, obj.info],
+    stroke: {
+      curve: "smooth",
+      width: 3
+    },
+    dataLabels: {
+      enabled: false
+    },
+    xaxis: {
+      type: "datetime",
+      axisBorder: {
+        color: obj.gridBorder,
+      },
+      axisTicks: {
+        color: obj.gridBorder,
+      },
+    },
+    yaxis: {
+      title: {
+        text: 'Views',
+      },
+      tickAmount: 4,
+      min: 0,
+      labels: {
+        offsetX: 0,
+      },
+      tooltip: {
+        enabled: true
+      }
+    },
+    grid: {
+      padding: {
+        bottom: -4
+      },
+      borderColor: obj.gridBorder,
+      xaxis: {
+        lines: {
+          show: true
+        }
+      }
+    },
+    tooltip: {
+      x: {
+        format: "dd MMM yyyy"
+      },
+    },
+    fill: {
+      type: 'solid',
+      opacity: [0.4,0.25],
+    },
+    legend: {
+      show: true,
+      position: "top",
+      horizontalAlign: 'center',
+      fontFamily: obj.fontFamily,
+      itemMargin: {
+        horizontal: 8,
+        vertical: 0
+      },
+    },
+  }
+};
+
+
+
+/**
+ * Mixed chart options
+ */
+function getMixedChartOptions(obj: any) {
+  return {
+    series: [
+      {
+        name: 'Team A',
+        type: 'column',
+        data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30]
+      }, {
+        name: 'Team B',
+        type: 'area',
+        data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43]
+      }
+    ],
+    chart: {
+      height: 300,
+      type: 'line',
+      stacked: false,
+      parentHeightOffset: 0,
+      foreColor: obj.bodyColor,
+      background: obj.cardBg,
+      toolbar: {
+        show: false
+      },
+    },
+    colors: [obj.danger, obj.info],
+    grid: {
+      borderColor: obj.gridBorder,
+      padding: {
+        bottom: -4
+      },
+      xaxis: {
+        lines: {
+          show: true
+        }
+      }
+    },
+    stroke: {
+      width: [0, 3],
+      curve: 'smooth'
+    },
+    plotOptions: {
+      bar: {
+        columnWidth: '50%'
+      }
+    },
+    legend: {
+      show: true,
+      position: "top",
+      horizontalAlign: 'center',
+      fontFamily: obj.fontFamily,
+      itemMargin: {
+        horizontal: 8,
+        vertical: 0
+      },
+    },
+    fill: {
+      opacity: [.75,0.25],
+    },
+    labels: ['01/01/2003', '02/01/2003','03/01/2003','04/01/2003','05/01/2003','06/01/2003','07/01/2003','08/01/2003','09/01/2003','10/01/2003','11/01/2003'],
+    markers: {
+      size: 0
+    },
+    xaxis: {
+      type:'datetime',
+      axisBorder: {
+        color: obj.gridBorder,
+      },
+      axisTicks: {
+        color: obj.gridBorder,
+      },
+    },
+    yaxis: {
+      title: {
+        text: 'Points',
+      },
+      labels: {
+        offsetX: 0
+      },
+    },
+    tooltip: {
+      shared: true,
+      intersect: false,
+      y: [{
+        formatter: function (y: any) {
+          if(typeof y !== "undefined") {
+            return  y.toFixed(0) + " points";
+          }
+          return y;
+        }
+      }, {
+        formatter: function (y: any) {
+          if(typeof y !== "undefined") {
+            return  y.toFixed(2) + " $";
+          }
+          return y;
+        }
+      }]
+    }
+  }
+};
+
+/**
+ * Generating demo data for area chart
+ */    
+ function generateDayWiseTimeSeries(s: number, count: number) {
+  var values = [[
+    4,3,10,9,29,19,25,9,12,7,19,5,13,9,17,2,7,5
+  ], [
+    2,3,8,7,22,16,23,7,11,5,12,5,10,4,15,2,6,2
+  ]];
+  var i = 0;
+  var series: any[] = [];
+  var x = new Date("11 Nov 2020").getTime();
+  while (i < count) {
+    series.push([x, values[s][i]]);
+    x += 86400000;
+    i++;
+  }
+  return series;
+}
 
 
 // /**

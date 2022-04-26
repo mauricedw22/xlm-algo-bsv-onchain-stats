@@ -342,6 +342,55 @@
     </div>
 </div>
 
+<div class="row">
+  <div class="col-xl-6 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title">Area chart</h6>
+
+        <apx-chart
+          [series]="areaChartOptions.series"
+          [chart]="areaChartOptions.chart"
+          [colors]="areaChartOptions.colors"
+          [stroke]="areaChartOptions.stroke"
+          [dataLabels]="areaChartOptions.dataLabels"
+          [xaxis]="areaChartOptions.xaxis"
+          [yaxis]="areaChartOptions.yaxis"
+          [grid]="areaChartOptions.grid"
+          [tooltip]="areaChartOptions.tooltip"
+          [fill]="areaChartOptions.fill"
+          [legend]="areaChartOptions.legend"
+        ></apx-chart>
+
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-6 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title">Mixed chart</h6>
+
+        <apx-chart
+          [series]="mixedChartOptions.series"
+          [chart]="mixedChartOptions.chart"
+          [colors]="mixedChartOptions.colors"
+          [grid]="mixedChartOptions.grid"
+          [stroke]="mixedChartOptions.stroke"
+          [plotOptions]="mixedChartOptions.plotOptions"
+          [legend]="mixedChartOptions.legend"
+          [fill]="mixedChartOptions.fill"
+          [labels]="mixedChartOptions.labels"
+          [markers]="mixedChartOptions.markers"
+          [xaxis]="mixedChartOptions.xaxis"
+          [yaxis]="mixedChartOptions.yaxis"
+          [tooltip]="mixedChartOptions.tooltip"
+        ></apx-chart>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- <div class="row">
   <div class="col-lg-5 col-xl-4 grid-margin grid-margin-xl-0 stretch-card">
     <div class="card">
