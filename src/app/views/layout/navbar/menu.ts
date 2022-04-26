@@ -7,7 +7,7 @@ export const MENU: MenuItem[] = [
     link: '/dashboard'
   },
   {
-    label: 'New Analysis',
+    label: 'More Blockchains',
     icon: 'activity',
     subMenus: [
       {
@@ -17,11 +17,11 @@ export const MENU: MenuItem[] = [
           //   isTitle: true,
           // },
           {
-            label: 'US Federal Ratios',
+            label: 'Algorand',
             link: '/charts-graphs/apexcharts'
           },
           {
-            label: 'Consumer Ratios',
+            label: 'Bitcoin SV',
             link: '/charts-graphs/apexcharts'
           },
           // {
