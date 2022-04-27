@@ -66,7 +66,7 @@ export class DashboardComponent implements OnInit {
 
     // this.lineChartOptions = getLineChartOptions(this.obj);
     // this.pieChartOptions = getPieChartOptions(this.obj);
-    this.radarChartOptions = getRadarChartOptions(this.obj);
+    // this.radarChartOptions = getRadarChartOptions(this.obj);
 
     this.areaChartOptions = getAreaChartOptions(this.obj);
     this.mixedChartOptions = getMixedChartOptions(this.obj);
@@ -109,16 +109,16 @@ export class DashboardComponent implements OnInit {
       // console.log('XLM Ledger 1 successful txns: ' + ledger1.successful_transaction_count);
 
 
-      const ledger_data = info3._embedded;
+      // const ledger_data = info3._embedded;
 
       for(let i=0;i<50;i=i++){
 
         // reserves_array.push(us_res_info.observations[i].value)
         // dates_bargraph_array.push((us_res_info.observations[i].date).substring(0,10))
         
-        XLM_ledger_array.push(ledger_data.records[i].sequence);
-        XLM_ledger_ops_array.push(ledger_data.records[i].operation_count);
-        XLM_ledger_txns_array.push(ledger_data.records[i].successful_transaction_count + ledger_data.records[i].failed_transaction_count);
+        XLM_ledger_array.push(info3._embedded.records[i].sequence);
+        XLM_ledger_ops_array.push(info3._embedded.records[i].operation_count);
+        XLM_ledger_txns_array.push(info3._embedded.records[i].successful_transaction_count + info3._embedded.records[i].failed_transaction_count);
 
 
       }
@@ -128,17 +128,15 @@ export class DashboardComponent implements OnInit {
 
     prepare_array();
 
-    setTimeout(() => {
+    // setTimeout(() => {
 
-      // this.ordersChartOptions = getOrdersChartOptions(this.obj, barchart_array);
-      this.areaChartOptions = getAreaChartOptions(this.obj);
-      this.mixedChartOptions = getMixedChartOptions(this.obj);
-      // this.goldPpiChartOptions = getGoldPpiChartOptions(this.obj, gold_array, dates_array);    
-      // this.reservesChartOptions = getReservesChartOptions(this.obj, reserves_array, turkey_reserves_array, germany_reserves_array, uk_reserves_array, india_reserves_array, dates_bargraph_array);
-      // this.lineChartOptions = getVixChartOptions(this.obj, spVix_array, russellVix_array, vix_dates_array);
-      // this.pieChartOptions = getPieChartOptions(this.obj, debtGDP_array);  
+    //   this.areaChartOptions = getAreaChartOptions(this.obj);
+    //   this.mixedChartOptions = getMixedChartOptions(this.obj);
 
-    }, 4000);
+    // }, 100);
+
+    this.areaChartOptions = getAreaChartOptions(this.obj);
+    this.mixedChartOptions = getMixedChartOptions(this.obj);
 
    }
 
@@ -147,7 +145,7 @@ export class DashboardComponent implements OnInit {
    * Only for RTL (feel free to remove if you are using LTR)
    */
   addRtlOptions() {
-    // // Gold PPI chart
+    // Gold PPI chart
     // this.goldPpiChartOptions.yaxis.labels.offsetX = -25;
     // this.goldPpiChartOptions.yaxis.title.offsetX = -75;
 
