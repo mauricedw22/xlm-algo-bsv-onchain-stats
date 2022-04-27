@@ -122,6 +122,10 @@ export class DashboardComponent implements OnInit {
 
 
       }
+
+      console.log('Ledger Array: ' + XLM_ledger_array);
+      console.log('Ledger Ops Array: ' + XLM_ledger_ops_array);
+      console.log('Ledger Txns Array: ' + XLM_ledger_txns_array);
    
 
     };
