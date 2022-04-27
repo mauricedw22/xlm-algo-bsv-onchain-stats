@@ -78,8 +78,11 @@ export class DashboardComponent implements OnInit {
     }
 
     // let gold_array: Array<any> = [];
-    let barchart_array: Array<any> = [];
-    let dates_array: Array<any> = [];
+    // let barchart_array: Array<any> = [];
+    // let dates_array: Array<any> = [];
+    let XLM_ledger_array: Array<any> = [];
+    let XLM_ledger_ops_array: Array<any> = [];
+    let XLM_ledger_txns_array: Array<any> = [];
 
     // let txn_data: Object = {};
 
@@ -89,21 +92,29 @@ export class DashboardComponent implements OnInit {
       const body = await response.text();
       const info = JSON.parse(body);
 
-      barchart_array.push(info.current_round);
+      console.log('Algorand data: ' + info.current_round)
 
       const response2 = await fetch('https://api.whatsonchain.com/v1/bsv/main/chain/info');
       const body2 = await response2.text();
       const info2 = JSON.parse(body2);
 
-      barchart_array.push(info2.blocks);
+      console.log('BSV data: ' + info2.blocks)
+
+      const response3 = await fetch('https://horizon.stellar.org/ledgers?order=desc&cursor=now');
+      const body3 = await response3.text();
+      const info3 = JSON.parse(body3);
+
+      const ledger1 = info3._embedded.records[0];
+      console.log('XLM Ledger 1 sequence: ' + ledger1.sequence);
+      console.log('XLM Ledger 1 successful txns: ' + ledger1.successful_transaction_count);
 
 
-      // for(let i=us_res_info.observations.length-144;i<us_res_info.observations.length;i=i+12){
+      for(let i=0;i<100;i=i++){
 
-      //   reserves_array.push(us_res_info.observations[i].value)
-      //   dates_bargraph_array.push((us_res_info.observations[i].date).substring(0,4))
+        // reserves_array.push(us_res_info.observations[i].value)
+        // dates_bargraph_array.push((us_res_info.observations[i].date).substring(0,4))
 
-      // }
+      }
    
 
     };
