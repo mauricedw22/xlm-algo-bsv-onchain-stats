@@ -88,31 +88,38 @@ export class DashboardComponent implements OnInit {
 
     async function prepare_array() {
 
-      const response = await fetch('https://node.algoexplorerapi.io/v2/ledger/supply');
-      const body = await response.text();
-      const info = JSON.parse(body);
+      // const response = await fetch('https://node.algoexplorerapi.io/v2/ledger/supply');
+      // const body = await response.text();
+      // const info = JSON.parse(body);
 
-      console.log('Algorand data: ' + info.current_round)
+      // console.log('Algorand data: ' + info.current_round)
 
-      const response2 = await fetch('https://api.whatsonchain.com/v1/bsv/main/chain/info');
-      const body2 = await response2.text();
-      const info2 = JSON.parse(body2);
+      // const response2 = await fetch('https://api.whatsonchain.com/v1/bsv/main/chain/info');
+      // const body2 = await response2.text();
+      // const info2 = JSON.parse(body2);
 
-      console.log('BSV data: ' + info2.blocks)
+      // console.log('BSV data: ' + info2.blocks)
 
-      const response3 = await fetch('https://horizon.stellar.org/ledgers?order=desc&cursor=now');
+      const response3 = await fetch('https://horizon.stellar.org/ledgers?order=desc&limit=50&cursor=now');
       const body3 = await response3.text();
       const info3 = JSON.parse(body3);
 
-      const ledger1 = info3._embedded.records[0];
-      console.log('XLM Ledger 1 sequence: ' + ledger1.sequence);
-      console.log('XLM Ledger 1 successful txns: ' + ledger1.successful_transaction_count);
+      // const ledger1 = info3._embedded.records[0];
+      // console.log('XLM Ledger 1 sequence: ' + ledger1.sequence);
+      // console.log('XLM Ledger 1 successful txns: ' + ledger1.successful_transaction_count);
 
 
-      for(let i=0;i<100;i=i++){
+      const ledger_data = info3._embedded;
+
+      for(let i=0;i<50;i=i++){
 
         // reserves_array.push(us_res_info.observations[i].value)
-        // dates_bargraph_array.push((us_res_info.observations[i].date).substring(0,4))
+        // dates_bargraph_array.push((us_res_info.observations[i].date).substring(0,10))
+        
+        XLM_ledger_array.push(ledger_data.records[i].sequence);
+        XLM_ledger_ops_array.push(ledger_data.records[i].operation_count);
+        XLM_ledger_txns_array.push(ledger_data.records[i].successful_transaction_count + ledger_data.records[i].failed_transaction_count);
+
 
       }
    
@@ -140,13 +147,13 @@ export class DashboardComponent implements OnInit {
    * Only for RTL (feel free to remove if you are using LTR)
    */
   addRtlOptions() {
-    // Gold PPI chart
-    this.goldPpiChartOptions.yaxis.labels.offsetX = -25;
-    this.goldPpiChartOptions.yaxis.title.offsetX = -75;
+    // // Gold PPI chart
+    // this.goldPpiChartOptions.yaxis.labels.offsetX = -25;
+    // this.goldPpiChartOptions.yaxis.title.offsetX = -75;
 
-    // Total Reserves chart
-    this.reservesChartOptions.yaxis.labels.offsetX = -10;
-    this.reservesChartOptions.yaxis.title.offsetX = -70;
+    // // Total Reserves chart
+    // this.reservesChartOptions.yaxis.labels.offsetX = -10;
+    // this.reservesChartOptions.yaxis.title.offsetX = -70;
   }
 }
 
