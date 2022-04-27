@@ -100,7 +100,7 @@ export class DashboardComponent implements OnInit {
 
       // console.log('BSV data: ' + info2.blocks)
 
-      const response3 = await fetch('https://horizon.stellar.org/ledgers?order=desc&limit=50&cursor=now');
+      const response3 = await fetch('https://horizon.stellar.org/ledgers?order=desc&limit=10&cursor=now');
       const body3 = await response3.text();
       const info3 = JSON.parse(body3);
 
@@ -111,7 +111,7 @@ export class DashboardComponent implements OnInit {
 
       // const ledger_data = info3._embedded;
 
-      for(let i=0;i<50;i=i++){
+      for(let i=0;i<10;i=i++){
 
         // reserves_array.push(us_res_info.observations[i].value)
         // dates_bargraph_array.push((us_res_info.observations[i].date).substring(0,10))
@@ -126,7 +126,7 @@ export class DashboardComponent implements OnInit {
 
     };
 
-    prepare_array();
+    // prepare_array();
 
     // setTimeout(() => {
 
