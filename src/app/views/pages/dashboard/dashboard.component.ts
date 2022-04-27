@@ -126,7 +126,7 @@ export class DashboardComponent implements OnInit {
 
     };
 
-    // prepare_array();
+    prepare_array();
 
     // setTimeout(() => {
 
