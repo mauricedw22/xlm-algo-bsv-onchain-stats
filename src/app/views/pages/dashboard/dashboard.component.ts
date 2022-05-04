@@ -187,33 +187,33 @@ export class DashboardComponent implements OnInit {
 // /**
 //  * Customerse chart options
 //  */
-function getCustomerseChartOptions(obj: any, ledger: Array<any>, ops: Array<any>) {
-  return {
-    series: [{
-      name: 'XLM Op count',
-      data: [3844, 3855, 3841, 3867, 3822, 3843, 3821, 3841, 3856, 3827, 3843]
-    }],
-    chart: {
-      type: "line",
-      height: 60,
-      sparkline: {
-        enabled: !0
-      }
-    },
-    colors: [obj.primary],
-    xaxis: {
-      type: 'datetime',
-      categories: ["Jan 01 2022", "Jan 02 2022", "Jan 03 2022", "Jan 04 2022", "Jan 05 2022", "Jan 06 2022", "Jan 07 2022", "Jan 08 2022", "Jan 09 2022", "Jan 10 2022", "Jan 11 2022",],
-    },
-    stroke: {
-      width: 2,
-      curve: "smooth"
-    },
-    markers: {
-      size: 0
-    },
-  }
-};
+// function getCustomerseChartOptions(obj: any) {
+//   return {
+//     series: [{
+//       name: '',
+//       data: [3844, 3855, 3841, 3867, 3822, 3843, 3821, 3841, 3856, 3827, 3843]
+//     }],
+//     chart: {
+//       type: "line",
+//       height: 60,
+//       sparkline: {
+//         enabled: !0
+//       }
+//     },
+//     colors: [obj.primary],
+//     xaxis: {
+//       type: 'datetime',
+//       categories: ["Jan 01 2022", "Jan 02 2022", "Jan 03 2022", "Jan 04 2022", "Jan 05 2022", "Jan 06 2022", "Jan 07 2022", "Jan 08 2022", "Jan 09 2022", "Jan 10 2022", "Jan 11 2022",],
+//     },
+//     stroke: {
+//       width: 2,
+//       curve: "smooth"
+//     },
+//     markers: {
+//       size: 0
+//     },
+//   }
+// };
 
 
 
