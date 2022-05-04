@@ -113,17 +113,17 @@ export class DashboardComponent implements OnInit {
 
       // const ledger_data = info3._embedded;
 
-      for(let i=0;i<10;i=i++){
+      // for(let i=0;i<10;i=i++){
 
-        console.log('for loop')
+      //   console.log('for loop')
         
-        XLM_ledger_array.push(info3._embedded.records[i].sequence);
-        XLM_ledger_ops_array.push(info3._embedded.records[i].operation_count);
-        XLM_ledger_txns_array.push(info3._embedded.records[i].successful_transaction_count + info3._embedded.records[i].failed_transaction_count);
+      //   XLM_ledger_array.push(info3._embedded.records[i].sequence);
+      //   XLM_ledger_ops_array.push(info3._embedded.records[i].operation_count);
+      //   XLM_ledger_txns_array.push(info3._embedded.records[i].successful_transaction_count + info3._embedded.records[i].failed_transaction_count);
 
-      }
+      // }
 
-      console.log('Ledger Array: ' + XLM_ledger_array);
+      // console.log('Ledger Array: ' + XLM_ledger_array);
       // console.log('Ledger Ops Array: ' + XLM_ledger_ops_array);
       // console.log('Ledger Txns Array: ' + XLM_ledger_txns_array);
    
