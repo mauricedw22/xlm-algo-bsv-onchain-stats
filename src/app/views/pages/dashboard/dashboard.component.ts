@@ -104,6 +104,8 @@ export class DashboardComponent implements OnInit {
       const body3 = await response3.text();
       const info3 = JSON.parse(body3);
 
+      //console.log()
+
       // const ledger1 = info3._embedded.records[0];
       // console.log('XLM Ledger 1 sequence: ' + ledger1.sequence);
       // console.log('XLM Ledger 1 successful txns: ' + ledger1.successful_transaction_count);
@@ -111,26 +113,28 @@ export class DashboardComponent implements OnInit {
 
       // const ledger_data = info3._embedded;
 
-      for(let i=0;i<10;i=i++){
+      // for(let i=0;i<10;i=i++){
 
-        // reserves_array.push(us_res_info.observations[i].value)
-        // dates_bargraph_array.push((us_res_info.observations[i].date).substring(0,10))
+      //   console.log('for loop')
+
+      //   // reserves_array.push(us_res_info.observations[i].value)
+      //   // dates_bargraph_array.push((us_res_info.observations[i].date).substring(0,10))
         
-        XLM_ledger_array.push(info3._embedded.records[i].sequence);
-        XLM_ledger_ops_array.push(info3._embedded.records[i].operation_count);
-        XLM_ledger_txns_array.push(info3._embedded.records[i].successful_transaction_count + info3._embedded.records[i].failed_transaction_count);
+      //   XLM_ledger_array.push(info3._embedded.records[i].sequence);
+      //   XLM_ledger_ops_array.push(info3._embedded.records[i].operation_count);
+      //   XLM_ledger_txns_array.push(info3._embedded.records[i].successful_transaction_count + info3._embedded.records[i].failed_transaction_count);
 
 
-      }
+      // }
 
-      console.log('Ledger Array: ' + XLM_ledger_array);
-      console.log('Ledger Ops Array: ' + XLM_ledger_ops_array);
-      console.log('Ledger Txns Array: ' + XLM_ledger_txns_array);
+      // console.log('Ledger Array: ' + XLM_ledger_array);
+      // console.log('Ledger Ops Array: ' + XLM_ledger_ops_array);
+      // console.log('Ledger Txns Array: ' + XLM_ledger_txns_array);
    
 
     };
 
-    prepare_array();
+    // prepare_array();
 
     // setTimeout(() => {
 
@@ -237,10 +241,10 @@ function getOrdersChartOptions(obj: any, yArr: Array<any>) {
     series: [
       {
         name: 'Total Views',
-        data: generateDayWiseTimeSeries(0, 18)
+        data: [1,2,3,4,5,6,7,8,9,0] // generateDayWiseTimeSeries(0, 18)
       }, {
         name: 'Unique Views',
-        data: generateDayWiseTimeSeries(1, 18)
+        data: [10,11,12,13,14,15,16,17,18,19] //generateDayWiseTimeSeries(1, 18)
       }
     ],
     chart: {
