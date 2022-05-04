@@ -104,7 +104,7 @@ export class DashboardComponent implements OnInit {
       const body3 = await response3.text();
       const info3 = JSON.parse(body3);
 
-      console.log(info3);
+      console.log(info3._embedded.records);
 
       // const ledger1 = info3._embedded.records[0];
       // console.log('XLM Ledger 1 sequence: ' + ledger1.sequence);
@@ -134,7 +134,7 @@ export class DashboardComponent implements OnInit {
 
     };
 
-    // prepare_array();
+    prepare_array();
 
     // setTimeout(() => {
 
