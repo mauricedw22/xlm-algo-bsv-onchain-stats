@@ -68,8 +68,8 @@ export class DashboardComponent implements OnInit {
     // this.pieChartOptions = getPieChartOptions(this.obj);
     // this.radarChartOptions = getRadarChartOptions(this.obj);
 
-    this.areaChartOptions = getAreaChartOptions(this.obj);
-    this.mixedChartOptions = getMixedChartOptions(this.obj);
+    // this.areaChartOptions = getAreaChartOptions(this.obj);
+    // this.mixedChartOptions = getMixedChartOptions(this.obj);
     
 
     // Some RTL fixes. (feel free to remove if you are using LTR))
@@ -104,11 +104,35 @@ export class DashboardComponent implements OnInit {
       const body3 = await response3.text();
       const info3 = JSON.parse(body3);
 
-      console.log(info3._embedded.records);
+      console.log(info3._embedded.records[0]);
 
-      // const ledger1 = info3._embedded.records[0];
-      // console.log('XLM Ledger 1 sequence: ' + ledger1.sequence);
-      // console.log('XLM Ledger 1 successful txns: ' + ledger1.successful_transaction_count);
+      // XLM Sequence array
+      XLM_ledger_array.push(info3._embedded.records[0].sequence);
+      XLM_ledger_array.push(info3._embedded.records[1].sequence);
+      XLM_ledger_array.push(info3._embedded.records[2].sequence);
+      XLM_ledger_array.push(info3._embedded.records[3].sequence);
+      XLM_ledger_array.push(info3._embedded.records[4].sequence);
+      XLM_ledger_array.push(info3._embedded.records[5].sequence);
+      XLM_ledger_array.push(info3._embedded.records[6].sequence);
+      XLM_ledger_array.push(info3._embedded.records[7].sequence);
+      XLM_ledger_array.push(info3._embedded.records[8].sequence);
+      XLM_ledger_array.push(info3._embedded.records[9].sequence);
+
+      console.log(XLM_ledger_array);
+
+      // XLM Operations array
+      XLM_ledger_ops_array.push(info3._embedded.records[0].operation_count);
+      XLM_ledger_ops_array.push(info3._embedded.records[1].operation_count);
+      XLM_ledger_ops_array.push(info3._embedded.records[2].operation_count);
+      XLM_ledger_ops_array.push(info3._embedded.records[3].operation_count);
+      XLM_ledger_ops_array.push(info3._embedded.records[4].operation_count);
+      XLM_ledger_ops_array.push(info3._embedded.records[5].operation_count);
+      XLM_ledger_ops_array.push(info3._embedded.records[6].operation_count);
+      XLM_ledger_ops_array.push(info3._embedded.records[7].operation_count);
+      XLM_ledger_ops_array.push(info3._embedded.records[8].operation_count);
+      XLM_ledger_ops_array.push(info3._embedded.records[9].operation_count);
+
+      console.log(XLM_ledger_ops_array);
 
 
       // const ledger_data = info3._embedded;
@@ -139,8 +163,8 @@ export class DashboardComponent implements OnInit {
 
     // }, 100);
 
-    this.areaChartOptions = getAreaChartOptions(this.obj);
-    this.mixedChartOptions = getMixedChartOptions(this.obj);
+    this.areaChartOptions = getAreaChartOptions(this.obj, XLM_ledger_array, XLM_ledger_ops_array);
+    this.mixedChartOptions = getMixedChartOptions(this.obj, XLM_ledger_array, XLM_ledger_ops_array);
 
    }
 
@@ -163,33 +187,33 @@ export class DashboardComponent implements OnInit {
 // /**
 //  * Customerse chart options
 //  */
-// function getCustomerseChartOptions(obj: any) {
-//   return {
-//     series: [{
-//       name: '',
-//       data: [3844, 3855, 3841, 3867, 3822, 3843, 3821, 3841, 3856, 3827, 3843]
-//     }],
-//     chart: {
-//       type: "line",
-//       height: 60,
-//       sparkline: {
-//         enabled: !0
-//       }
-//     },
-//     colors: [obj.primary],
-//     xaxis: {
-//       type: 'datetime',
-//       categories: ["Jan 01 2022", "Jan 02 2022", "Jan 03 2022", "Jan 04 2022", "Jan 05 2022", "Jan 06 2022", "Jan 07 2022", "Jan 08 2022", "Jan 09 2022", "Jan 10 2022", "Jan 11 2022",],
-//     },
-//     stroke: {
-//       width: 2,
-//       curve: "smooth"
-//     },
-//     markers: {
-//       size: 0
-//     },
-//   }
-// };
+function getCustomerseChartOptions(obj: any, ledger: Array<any>, ops: Array<any>) {
+  return {
+    series: [{
+      name: 'XLM Op count',
+      data: [3844, 3855, 3841, 3867, 3822, 3843, 3821, 3841, 3856, 3827, 3843]
+    }],
+    chart: {
+      type: "line",
+      height: 60,
+      sparkline: {
+        enabled: !0
+      }
+    },
+    colors: [obj.primary],
+    xaxis: {
+      type: 'datetime',
+      categories: ["Jan 01 2022", "Jan 02 2022", "Jan 03 2022", "Jan 04 2022", "Jan 05 2022", "Jan 06 2022", "Jan 07 2022", "Jan 08 2022", "Jan 09 2022", "Jan 10 2022", "Jan 11 2022",],
+    },
+    stroke: {
+      width: 2,
+      curve: "smooth"
+    },
+    markers: {
+      size: 0
+    },
+  }
+};
 
 
 
@@ -232,15 +256,15 @@ function getOrdersChartOptions(obj: any, yArr: Array<any>) {
 /**
  * Area chart options
  */    
- function getAreaChartOptions(obj: any) {
+ function getAreaChartOptions(obj: any, ledger: Array<any>, ops: Array<any>) {
   return {
     series: [
       {
-        name: 'Total Views',
-        data: [1,2,3,4,5,6,7,8,9,0] // generateDayWiseTimeSeries(0, 18)
+        name: 'Operation count',
+        data: ops // [1,2,3,4,5,6,7,8,9,0] // generateDayWiseTimeSeries(0, 18)
       }, {
-        name: 'Unique Views',
-        data: [10,11,12,13,14,15,16,17,18,19] //generateDayWiseTimeSeries(1, 18)
+        name: 'Ledger Number',
+        data: ledger // [10,11,12,13,14,15,16,17,18,19] //generateDayWiseTimeSeries(1, 18)
       }
     ],
     chart: {
@@ -322,17 +346,17 @@ function getOrdersChartOptions(obj: any, yArr: Array<any>) {
 /**
  * Mixed chart options
  */
-function getMixedChartOptions(obj: any) {
+function getMixedChartOptions(obj: any, ledger: Array<any>, ops: Array<any>) {
   return {
     series: [
       {
-        name: 'Team A',
+        name: 'Operation Count',
         type: 'column',
-        data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30]
+        data: ops // [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30]
       }, {
-        name: 'Team B',
+        name: 'Next Metric',
         type: 'area',
-        data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43]
+        data: ops // [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43]
       }
     ],
     chart: {
@@ -380,12 +404,12 @@ function getMixedChartOptions(obj: any) {
     fill: {
       opacity: [.75,0.25],
     },
-    labels: ['01/01/2003', '02/01/2003','03/01/2003','04/01/2003','05/01/2003','06/01/2003','07/01/2003','08/01/2003','09/01/2003','10/01/2003','11/01/2003'],
+    labels: ledger, // ['01/01/2003', '02/01/2003','03/01/2003','04/01/2003','05/01/2003','06/01/2003','07/01/2003','08/01/2003','09/01/2003','10/01/2003','11/01/2003'],
     markers: {
       size: 0
     },
     xaxis: {
-      type:'datetime',
+      type:'number',
       axisBorder: {
         color: obj.gridBorder,
       },
@@ -395,7 +419,7 @@ function getMixedChartOptions(obj: any) {
     },
     yaxis: {
       title: {
-        text: 'Points',
+        text: 'Network Stats',
       },
       labels: {
         offsetX: 0
